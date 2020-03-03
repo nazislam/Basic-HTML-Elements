@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>HTML Form</title>
+    </head>
+    <body>
+        <form>
+            <label for="username">Username: </label>
+            <input type="text" id="username"> <br>
+            <label for="password">Password: </label>
+            <input type="password" id="password"> <br>
+            <!-- Drop down menu -->
+            <span>Pick your own: </span>
+            <select name="programmingLanguage" id="programmingLanguage">
+                <option value="java">Java</option>
+                <option value="javascript">JavaSript</option>
+                <option value="python">Python</option>
+            </select> <br>
+
+            <!-- Radio button -->
+            <span>Any other interest? </span> <br>
+            <input type="radio" name="otherInterest" value="c" id="c"> <label for="c">C</label> <br>
+            <input type="radio" name="otherInterest" value="c++" id="c++" checked> <label for="c++">C++</label> <br>
+            <input type="radio" name="otherInterest" value="c#" id="c#"> <label for="c#">C#</label> <br>
+
+            <!-- Checkbox -->
+            <span>Which operating system? </span> <br>
+            <input type="checkbox" name="operatingSystem" value="osx" id="osx" checked> <label for="osx">OS X</label> <br>
+            <input type="checkbox" name="operatingSystem" value="windows" id="windows" checked> <label for="windows">Windows</label> <br>
+            <input type="checkbox" name="operatingSystem" value="linux" id="linux"> <label for="linux">Linux</label> <br>
+
+            <input type="button" id="button" value="Sign Up!">
+        </form>
+
+        <script>
+            let inputOtherInterest;
+            let inputOperatingSystems = [];
+
+            function writeInConsole() {
+                let inputUsername = document.getElementById("username").value;
+                let inputPassword = document.getElementById("password").value;
+                let inputProgrammingLanguage = document.getElementById("programmingLanguage").value;
+
+                for (let i = 0; i < document.getElementsByName("otherInterest").length; i++) {
+                    if (document.getElementsByName("otherInterest")[i].checked) {
+                        inputOtherInterest = document.getElementsByName("otherInterest")[i].value;
+                    }
+                }
+
+                for (let i = 0; i < document.getElementsByName("operatingSystem").length; i++) {
+                    if (document.getElementsByName("operatingSystem")[i].checked) {
+                        inputOperatingSystems.push(document.getElementsByName("operatingSystem")[i].value);
+                    }
+                }
+
+                console.log("Username:", inputUsername);
+                console.log("Password:", inputPassword);
+                console.log("Programming Language:", inputProgrammingLanguage);
+                console.log("Other Interest:", inputOtherInterest);
+                console.log("Operating Systems:", inputOperatingSystems);
+
+            }
+
+            document.getElementById("button").addEventListener('click', writeInConsole);
+            
+        </script>
+    </body>
+</html>
